@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "windows.h": "c",
+        "patientslist.h": "c",
+        "status.h": "c"
+    }
+}
