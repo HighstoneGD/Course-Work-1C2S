@@ -313,7 +313,7 @@ void sort_debt(List *patients_list) {
 unsigned get_method(unsigned amount) {
     unsigned method;
     while (1) {
-        scanf("%u", &method);
+        method = scan_unsigned();
         if (!method || method > amount)
             printf("Невалідне значення. Спробуйте ще раз: ");
         else
@@ -371,7 +371,7 @@ Status write_from_console(PatientData **result) {
     getchar();
     gets((*result) -> name);
     printf("\nВведіть номер картки пацієнта: ");
-    scanf("%u", &((*result) -> card_number));
+    (*result) -> card_number = scan_unsigned();
     printf("\nВиди робіт:");
     for (int i = 0; i < 5; i++)
         printf("\n%d. %s", i + 1, types[i]);
@@ -379,9 +379,9 @@ Status write_from_console(PatientData **result) {
     unsigned type = get_method(5);
     (*result) -> type = type;
     printf("\nВведіть вартість виконаної роботи (у грн): ");
-    scanf("%u", &((*result) -> cost));
+    (*result) -> cost = scan_unsigned();
     printf("\nВведіть оплачену суму (у грн): ");
-    scanf("%u", &((*result) -> paid));
+    (*result) -> paid = scan_unsigned();
     sync_debt(*result);
     return OK;
 }

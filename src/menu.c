@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 #include "menu.h"
 
 #define ITEMS_AMOUNT 10
@@ -39,8 +40,7 @@ void print_menu() {
 
 MenuElement scan_command() {
     printf("\nВведіть номер команди: ");
-    unsigned command;
-    scanf("%u", &command);
+    unsigned command = scan_unsigned();
     return command <= ITEMS_AMOUNT ? command : 10;
 }
 
@@ -48,4 +48,17 @@ void press_to_continue() {
     printf("\nНатисніть Enter щоб продовжити... ");
     getchar();
     while (getchar() != '\n') {}
+}
+
+unsigned scan_unsigned() {
+    unsigned num;
+    while (1) {
+        if (!scanf("%u", &num)) {
+            int c;
+            while ((c = getchar()) != EOF && c != '\n');
+            continue;
+        } else {
+            return num;
+        }
+    }
 }
