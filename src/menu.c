@@ -47,7 +47,7 @@ MenuElement scan_command() {
 void press_to_continue() {
     printf("\nНатисніть Enter щоб продовжити... ");
     getchar();
-    while (getchar() != '\n') {}
+    while (getchar() != '\n');
 }
 
 unsigned scan_unsigned() {
